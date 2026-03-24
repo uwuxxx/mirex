@@ -1,97 +1,128 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #1e1e2f;
-    color: #f0f0f0;
+    background: #0b0b17;
+    color: #e0e0e0;
+    overflow-x: hidden;
 }
 
 nav {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 1rem 0;
-    background: #2c2c3e;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    background: linear-gradient(90deg, #0f0f20, #1c1c3c);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 nav a {
     text-decoration: none;
-    color: #f0f0f0;
-    font-weight: 600;
-    transition: color 0.3s;
+    color: #e0e0e0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
-    color: #00d4ff;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
 }
 
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem 2rem;
 }
 
 .friend-card {
-    background: #2c2c3e;
-    border-radius: 15px;
-    width: 300px;
+    background: #1b1b36;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    position: relative;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.friend-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #00ffff33, #ff00ff33);
+    opacity: 0;
+    transition: opacity 0.5s;
+    border-radius: 20px;
 }
 
 .friend-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.85);
+}
+
+.friend-card:hover::before {
+    opacity: 1;
 }
 
 .friend-card .logo {
     width: 100%;
     height: 300px;
     object-fit: cover;
+    border-bottom: 2px solid #222244;
+    transition: transform 0.5s;
+}
+
+.friend-card:hover .logo {
+    transform: scale(1.05);
 }
 
 .content {
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 .title {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
+    color: #ffffff;
 }
 
 .description {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    color: #cfcfcf;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #bfbfbf;
+    line-height: 1.5;
 }
 
 .button {
     display: inline-block;
     margin: 0.3rem 0.3rem 0 0;
-    padding: 0.5rem 1rem;
-    background: #00d4ff;
-    color: #1e1e2f;
+    padding: 0.6rem 1.3rem;
+    background: #00ffff;
+    color: #0b0b17;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
 }
 
 .button:hover {
-    background: #00a2cc;
-    transform: translateY(-2px);
+    background: #00d4cc;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 212, 204, 0.6);
 }
 
 @media screen and (max-width: 768px) {
-    .friend-card {
-        width: 90%;
-    }
-
     nav {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    .cards-container {
+        padding: 2rem 1rem;
+        gap: 2rem;
     }
 }
